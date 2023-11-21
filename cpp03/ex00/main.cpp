@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.cpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 16:36:12 by vvalet            #+#    #+#             */
-/*   Updated: 2023/11/21 15:31:31 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/11/21 17:11:34 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
+#include "ClapTrap.hpp"
 
 int main(void)
 {
-	FragTrap floyd("Floyd");
+	ClapTrap floyd("Floyd");
 
 	std::cout << floyd;
+	floyd.takeDamage(5);
 	floyd.attack("Jimbo");
-	floyd.beRepaired(20);
-	floyd.takeDamage(50);
-	floyd.highFivesGuys();
+	floyd.beRepaired(2);
 	std::cout << floyd;
-	floyd.takeDamage(80);
+	floyd.takeDamage(20);
 	floyd.attack("Jimbo");
-	floyd.beRepaired(10);
+	floyd.beRepaired(2);
 	std::cout << floyd;
 }
