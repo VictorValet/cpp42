@@ -6,7 +6,7 @@
 #    By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/30 16:10:39 by vvalet            #+#    #+#              #
-#    Updated: 2023/11/07 11:14:12 by vvalet           ###   ########.fr        #
+#    Updated: 2023/11/21 15:31:31 by vvalet           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ FLAGS		=	-Wall -Wextra -Werror -std=c++98
 
 #---------------------------------SOURCE FILES---------------------------------
 
-SRCS		=	test.cpp\
+SRCS		=	main.cpp\
 				ClapTrap.cpp\
 				ScavTrap.cpp
 

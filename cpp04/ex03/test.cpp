@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 15:48:19 by vvalet            #+#    #+#             */
-/*   Updated: 2023/11/16 15:04:49 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/11/21 15:31:31 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ int	main(void)
 	std::cout << "c1.inventory2 (" << c1.getInventory(1) << ") : " << c1.getInventory(1)->getType() << std::endl;
 	std::cout << "c1.inventory3 (" << c1.getInventory(2) << ") : " << c1.getInventory(2)->getType() << std::endl;
 	std::cout << "c1.inventory4 (" << c1.getInventory(3) << ") : " << c1.getInventory(3)->getType() << std::endl;
-	std::cout << "c2.inventory1 (" << c1.getInventory(0) << ") : " << c1.getInventory(0)->getType() << std::endl;
-	std::cout << "c2.inventory2 (" << c1.getInventory(1) << ") : " << c1.getInventory(1)->getType() << std::endl;
+	std::cout << "c2.inventory1 (" << c2.getInventory(0) << ") : " << c2.getInventory(0)->getType() << std::endl;
+	std::cout << "c2.inventory2 (" << c2.getInventory(1) << ") : " << c2.getInventory(1)->getType() << std::endl;
 	c1.use(0, c2);
 	c1.use(2, c2);
 	to_delete = c1.getInventory(1);
