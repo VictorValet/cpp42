@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 14:59:42 by vvalet            #+#    #+#             */
-/*   Updated: 2023/11/28 10:43:48 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/11/28 11:31:26 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,30 @@
 #include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "Intern.hpp"
 
 int	main(void)
 {
 	Bureaucrat	test1("BigBoss", 1);
 	Bureaucrat	test2("DumbHead", 150);
-	ShrubberyCreationForm f1("42");
-	PresidentialPardonForm f2("vvalet");
-	RobotomyRequestForm f3("patient0");
+	Intern		john;
+	AForm		*form;
 	
 	try
 	{
-		test1.executeForm(f1);
-		test2.signForm(f1);
-		test1.signForm(f1);
-		test1.signForm(f2);
-		test1.signForm(f3);
-		test2.executeForm(f1);
-		test1.executeForm(f1);
-		test1.executeForm(f2);
-		test1.executeForm(f3);	
+		form = john.makeForm("unexisting", "vvalet");
+		form = john.makeForm("presidential pardon", "vvalet");
+		test1.signForm(*form);
+		test1.executeForm(*form);
+		delete form;
+		form = john.makeForm("robotomy request", "patient0");
+		test1.signForm(*form);
+		test1.executeForm(*form);
+		delete form;
+		form = john.makeForm("shrubbery creation", "42");
+		test1.signForm(*form);
+		test1.executeForm(*form);
+		delete form;
 	}
 	catch (std::exception &e)
 	{
