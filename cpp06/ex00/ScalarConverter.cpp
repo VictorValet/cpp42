@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 11:41:29 by vvalet            #+#    #+#             */
-/*   Updated: 2023/11/28 14:05:02 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/11/30 14:21:49 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,13 @@ ScalarConverter::ScalarConverter(void)
 
 ScalarConverter::ScalarConverter(const ScalarConverter &original)
 {
-	*this = original;
+	(void) original;
 	return ;
 }
 
 ScalarConverter	&ScalarConverter::operator=(const ScalarConverter &original)
 {
+	(void) original;
 	return (*this);
 }
 
@@ -35,5 +36,12 @@ ScalarConverter::~ScalarConverter(void)
 
 void	ScalarConverter::convert(std::string str)
 {
-	;
+	try
+	{
+		Data data(str);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 }

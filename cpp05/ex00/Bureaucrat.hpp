@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 14:59:46 by vvalet            #+#    #+#             */
-/*   Updated: 2023/11/23 16:28:41 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/11/29 11:14:08 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ class Bureaucrat
 		int					_grade;
 		class GradeTooHighException: public std::exception
 		{
-			public: 
-				const char	*what() const _NOEXCEPT;
+			public:
+				const char	*what() const throw();
 		};
 		class GradeTooLowException: public std::exception		
 		{
-			public: 
-				const char	*what() const _NOEXCEPT;
+			public:
+				const char	*what() const throw();
 		};
 };
 

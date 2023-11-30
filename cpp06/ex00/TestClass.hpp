@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   TestClass.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/28 11:41:27 by vvalet            #+#    #+#             */
-/*   Updated: 2023/11/29 15:39:57 by vvalet           ###   ########.fr       */
+/*   Created: 2023/11/29 11:40:15 by vvalet            #+#    #+#             */
+/*   Updated: 2023/11/29 15:10:35 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCONVERTER_HPP
-# define SCALARCONVERTER_HPP
+#ifndef TESTCLASS_HPP
+# define TESTCLASS_HPP
 
-# include <iostream>
-# include "Data.hpp"
+# include "ScalarConverter.hpp"
 
-class ScalarConverter
+class TestClass : public ScalarConverter
 {
 	public:
-		~ScalarConverter(void);
-		static void	convert(std::string str);
+		TestClass(void);
+		~TestClass(void);
 
-	protected:
-		ScalarConverter(void);
-		ScalarConverter(const ScalarConverter &original);
-		ScalarConverter	&operator=(const ScalarConverter &original);
+	private:
+		TestClass(const TestClass &original);
+		TestClass	&operator=(const TestClass &original);
 };
 
 #endif
