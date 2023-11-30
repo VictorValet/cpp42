@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   TestClass.cpp                                      :+:      :+:    :+:   */
+/*   A.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/29 11:40:12 by vvalet            #+#    #+#             */
-/*   Updated: 2023/11/29 11:42:43 by vvalet           ###   ########.fr       */
+/*   Created: 2023/11/30 15:26:09 by vvalet            #+#    #+#             */
+/*   Updated: 2023/11/30 15:54:20 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "TestClass.hpp"
+#ifndef A_HPP
+# define A_HPP
 
-TestClass::TestClass(void)
-{
-	return ;
-}
+# include "Base.hpp"
 
-TestClass::TestClass(const TestClass &original)
+class A: public Base
 {
-	(void) original;
-	return ;
-}
+	public:
+		A(void);
+		~A(void);
+};
 
-TestClass	&TestClass::operator=(const TestClass &original)
-{
-	(void) original;
-	return (*this);
-}
-
-TestClass::~TestClass(void)
-{
-	return ;
-}
+#endif

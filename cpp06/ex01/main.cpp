@@ -6,24 +6,23 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 10:52:10 by vvalet            #+#    #+#             */
-/*   Updated: 2023/11/30 16:10:22 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/11/30 16:11:09 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#include "Serializer.hpp"
 
 int main(void)
-{	
-	ScalarConverter::convert("\'0\'");
-	ScalarConverter::convert("0");
-	ScalarConverter::convert("20");
-	ScalarConverter::convert("33.32");
-	ScalarConverter::convert("21456.32949494");
-	ScalarConverter::convert("21456.32949494f");
-
-	// converter.convert("2147483647");
-	// converter.convert("-2147483648");
-	// converter.convert("2147483648");
-	// converter.convert("-2147483649");
+{
+	Data		*ptr1;
+	Data		*ptr2;
 	
+	ptr1 = new Data(5);
+	std::cout << "ptr1: " << ptr1 << std::endl;
+	std::cout << "ptr2: " << ptr2 << std::endl;
+	ptr2 = Serializer::deserialize(Serializer::serialize(ptr1));
+	std::cout << "ptr1: " << ptr1 << std::endl;
+	std::cout << "ptr2: " << ptr2 << std::endl;
+
+	delete ptr1;
 }
