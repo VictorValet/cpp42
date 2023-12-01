@@ -6,10 +6,11 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 14:59:42 by vvalet            #+#    #+#             */
-/*   Updated: 2023/12/01 10:12:11 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/01 10:28:40 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <climits>
 #include <stdlib.h>
 #include "Bureaucrat.hpp"
 
@@ -36,8 +37,8 @@ static int	prompt_grade(std::string prompt)
 		std::cout << prompt;
 		getline(std::cin, str);
 		if (str.compare("\0") != 0
-			&& atoll(str.c_str()) <= __INT_MAX__ 
-			&& atoll(str.c_str()) >= -(__INT_MAX__) - 1)
+			&& atoll(str.c_str()) <= INT_MAX 
+			&& atoll(str.c_str()) >= INT_MIN)
 			break ;
 	}
 	return(atoi(str.c_str()));
