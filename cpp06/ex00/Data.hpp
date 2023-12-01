@@ -6,15 +6,16 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 09:59:32 by vvalet            #+#    #+#             */
-/*   Updated: 2023/11/30 14:28:26 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/01 10:32:11 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DATA_HPP
 # define DATA_HPP
 
-# include <iostream>
+# include <climits>
 # include <iomanip>
+# include <iostream>
 # include <math.h>
 
 enum types

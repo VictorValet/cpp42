@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 09:59:26 by vvalet            #+#    #+#             */
-/*   Updated: 2023/11/30 14:39:58 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/01 10:33:45 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static bool	is_float(std::string str)
 {
 	if (str[str.length() - 1] != 'f')
 		return (false);
-	str.pop_back();
+	str[str.length() - 1] = 0;
 	if (is_double(str) != true)
 		return (false);
 	else
