@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 15:36:58 by vvalet            #+#    #+#             */
-/*   Updated: 2023/11/30 16:19:58 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/01 10:51:12 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,18 +49,18 @@ void	Base::identify(Base &p)
 		ref = dynamic_cast<A&>(p);
 		std::cout << "A\n";
 	}
-	catch(const std::bad_cast &e){}
+	catch(const std::exception &e){}
 	try
 	{
 		ref = dynamic_cast<B&>(p);
 		std::cout << "B\n";
 	}
-	catch(const std::bad_cast &e){}
+	catch(const std::exception &e){}
 	try
 	{
 		ref = dynamic_cast<C&>(p);
 		std::cout << "C\n";
 	}
-	catch(const std::bad_cast &e){}	
+	catch(const std::exception &e){}	
 }
 

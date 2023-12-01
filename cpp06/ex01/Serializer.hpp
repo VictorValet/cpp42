@@ -6,15 +6,16 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 14:45:48 by vvalet            #+#    #+#             */
-/*   Updated: 2023/11/30 14:53:42 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/01 10:39:27 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SERIALIZER_HPP
 # define SERIALIZER_HPP
 
-# include "Data.hpp"
 # include <iostream>
+# include <stdint.h>
+# include "Data.hpp"
 
 class Serializer
 {
