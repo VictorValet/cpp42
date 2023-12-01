@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 14:59:44 by vvalet            #+#    #+#             */
-/*   Updated: 2023/11/27 12:10:30 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/01 10:19:38 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,14 +81,14 @@ void	Bureaucrat::signForm(Form &f)
 		f.beSigned(*this);
 		std::cout << this->_name << " signed " << f.getName() << std::endl;
 	}
-	catch (std::exception)
+	catch (std::exception &e)
 	{
 		std::cout << this->_name << " couldn't sign " << f.getName() << " because ";
-		if (this->_grade > f.getSignGrade())
-			std::cout << "his grade is " << this->_grade << " and a " << f.getSignGrade()
-			<< " grade is required."  << std::endl;
-		else
+		if (f.getSigned() == true)
 			std::cout << "it was already signed." << std::endl;
+		else
+			std::cout << "his grade is " << this->_grade << " and a grade " << f.getSignGrade()
+			<< " is required."  << std::endl;
 	}
 }
 

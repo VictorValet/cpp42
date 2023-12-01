@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 14:59:44 by vvalet            #+#    #+#             */
-/*   Updated: 2023/11/27 09:53:17 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/01 10:12:39 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,12 @@ void	Bureaucrat::lowerGrade()
 		this->_grade++;
 }
 
-const char	*Bureaucrat::GradeTooHighException::what() const _NOEXCEPT
+const char	*Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return ("Grade is too high.");
 }
 
-const char	*Bureaucrat::GradeTooLowException::what() const _NOEXCEPT
+const char	*Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return ("Grade is too low.");
 }

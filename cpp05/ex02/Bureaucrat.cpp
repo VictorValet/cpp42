@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 14:59:44 by vvalet            #+#    #+#             */
-/*   Updated: 2023/11/28 10:23:22 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/01 10:20:40 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,14 +81,14 @@ void	Bureaucrat::signForm(AForm &f)
 		f.beSigned(*this);
 		std::cout << this->_name << " signed " << f.getName() << std::endl;
 	}
-	catch (std::exception)
+	catch (std::exception &e)
 	{
 		std::cout << this->_name << " couldn't sign " << f.getName() << " because ";
-		if (this->_grade > f.getSignGrade())
+		if (f.getSigned() == true)
+			std::cout << "it was already signed." << std::endl;
+		else
 			std::cout << "his grade is " << this->_grade << " and a grade " << f.getSignGrade()
 			<< " is required."  << std::endl;
-		else
-			std::cout << "it was already signed." << std::endl;
 	}
 }
 
@@ -99,7 +99,7 @@ void	Bureaucrat::executeForm(AForm const &f) const
 		f.execute(*this);
 		std::cout << this->_name << " executed " << f.getName() << std::endl; 
 	}
-	catch (std::exception)
+	catch (std::exception &e)
 	{
 		std::cout << this->_name << " couldn't execute " << f.getName() << " because ";
 		if (f.getSigned() == false)
