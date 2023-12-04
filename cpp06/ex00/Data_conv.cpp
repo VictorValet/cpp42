@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 09:59:26 by vvalet            #+#    #+#             */
-/*   Updated: 2023/12/04 14:22:01 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/04 14:59:19 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,57 @@ static bool	is_float(std::string str)
 		return (true);
 }
 
-static void	convert(std::string str, Data &d)
+static void	convert_char(std::string str, Data &d)
 {
-	double v;
+	d.setChar(str[1]);
+	d.setInt(static_cast<int>(d.getChar()));
+	d.setFloat(static_cast<float>(d.getChar()));
+	d.setDouble(static_cast<double>(d.getChar()));
+	d.printC(str[1]);
+	d.printI(str[1]);
+	d.printF();
+	d.printD();
+}
 
+static void	convert_int(std::string str, Data &d)
+{
+	int			v;
+	long long	l;
+
+	l = strtod(str.c_str(), NULL);
 	v = strtod(str.c_str(), NULL);
+	if (static_cast<long long>(v) != l)
+		throw (Data::ConversionErrorException("Int conversion overflow"));
+	d.setInt(static_cast<int>(v));
+	d.setChar(static_cast<char>(v));
+	d.setFloat(static_cast<float>(v));
+	d.setDouble(static_cast<double>(v));
+	d.printC(l);
+	d.printI(l);
+	d.printF();
+	d.printD();
+}
+
+static void	convert_double(std::string str, Data &d)
+{
+	double	v;
+
+	v = atof(str.c_str());
+	d.setInt(static_cast<int>(v));
+	d.setChar(static_cast<char>(v));
+	d.setFloat(static_cast<float>(v));
+	d.setDouble(static_cast<double>(v));
+	d.printC(v);
+	d.printI(v);
+	d.printF();
+	d.printD();
+}
+
+static void	convert_float(std::string str, Data &d)
+{
+	float		v;
+
+	v = atof(str.c_str());
 	d.setInt(static_cast<int>(v));
 	d.setChar(static_cast<char>(v));
 	d.setFloat(static_cast<float>(v));
@@ -80,7 +126,7 @@ Data::Data(std::string str)
 	{
 		if (type[i](str) == true)
 		{
-			convert(str, *this);
+			convert[i](str, *this);
 			return ;
 		}
 	}
@@ -90,3 +136,6 @@ Data::Data(std::string str)
 
 bool	(*Data::type[4])(std::string) = 
 	{is_char, is_int, is_float, is_double};
+
+void	(*Data::convert[4])(std::string, Data &) =
+	{convert_char, convert_int, convert_float, convert_double};
