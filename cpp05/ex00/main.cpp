@@ -6,13 +6,25 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 14:59:42 by vvalet            #+#    #+#             */
-/*   Updated: 2023/12/01 10:28:40 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/04 12:52:38 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <climits>
 #include <stdlib.h>
 #include "Bureaucrat.hpp"
+
+static bool	is_int(std::string str)
+{
+	if (str[0] != '-' && str[0] != '+' && isdigit(str[0]) == false)
+		return (false);
+	for (size_t i = 1; i < str.length(); i++)
+	{
+		if (isdigit(str[i]) == false)
+			return (false);
+	}
+	return (true);
+}
 
 static std::string	prompt_name(std::string prompt)
 {
@@ -21,7 +33,11 @@ static std::string	prompt_name(std::string prompt)
 	while (1)
 	{
 		std::cout << prompt;
-		getline(std::cin, str);
+		if (getline(std::cin, str) == 0)
+		{
+			std::cout << std::endl;
+			exit(0);
+		}
 		if (str.compare("\0") != 0)
 			break ;
 	}
@@ -35,10 +51,12 @@ static int	prompt_grade(std::string prompt)
 	while (1)
 	{
 		std::cout << prompt;
-		getline(std::cin, str);
-		if (str.compare("\0") != 0
-			&& atoll(str.c_str()) <= INT_MAX 
-			&& atoll(str.c_str()) >= INT_MIN)
+		if (getline(std::cin, str) == 0)
+		{
+			std::cout << std::endl;
+			exit(0);
+		}
+		if (str.compare("\0") != 0 && is_int(str) == true)
 			break ;
 	}
 	return(atoi(str.c_str()));
