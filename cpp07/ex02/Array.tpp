@@ -1,38 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   whatever.hpp                                       :+:      :+:    :+:   */
+/*   Array.tpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 15:21:54 by vvalet            #+#    #+#             */
-/*   Updated: 2023/12/05 10:32:09 by vvalet           ###   ########.fr       */
+/*   Created: 2023/12/05 11:11:32 by vvalet            #+#    #+#             */
+/*   Updated: 2023/12/05 11:16:52 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WHATEVER_HPP
-# define WHATEVER_HPP
+#include "Array.hpp"
 
-template<typename T>
-void	swap(T &x, T &y)
+Array::Array(void)
 {
-	T temp;
-	
-	temp = x;
-	x = y;
-	y = temp;
+	;
 }
 
-template<typename T>
-const T	&min(const T &x, const T &y)
+Array::Array(unsigned int n)
 {
-	return ((x < y) ? x : y);
+	;
 }
 
-template<typename T>
-const T	&max(const T &x, const T &y)
+Array::Array(Array &original)
 {
-	return ((x > y) ? x : y);
+	;
 }
 
-#endif
+Array &Array::operator=(Array &original)
+{
+	;
+}
+
+~Array::Array(void)
+{
+	;
+}
+
+unsigned int	Array::size(void) const
+{
+	;
+}

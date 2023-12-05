@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 14:45:48 by vvalet            #+#    #+#             */
-/*   Updated: 2023/12/01 10:39:27 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/05 11:59:50 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class Serializer
 		static uintptr_t serialize(Data* ptr);
 		static Data* deserialize(uintptr_t raw);
 
-	protected:
+	private:
 		Serializer(void);
 		Serializer(const Serializer &original);
 		Serializer	&operator=(const Serializer &original);
