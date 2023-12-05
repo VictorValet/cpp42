@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/05 10:30:26 by vvalet            #+#    #+#             */
-/*   Updated: 2023/12/05 11:22:19 by vvalet           ###   ########.fr       */
+/*   Created: 2023/12/05 12:02:43 by vvalet            #+#    #+#             */
+/*   Updated: 2023/12/05 14:57:28 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,17 @@ class Array
 	public:
 		Array(void);
 		Array(unsigned int n);
-		Array(Array &original);
-		Array &operator=(Array &original);
+		Array(const Array &original);
+		Array	&operator=(const Array &original);
 		~Array(void);
 		unsigned int	size(void) const;
-		
+		T				&operator[](unsigned int n) const;
+
 	private:
-		T				*_element;
+		T				*_array;
 		unsigned int	_size;
 };
+
+#include "Array.tpp"
 
 #endif
