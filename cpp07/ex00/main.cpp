@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 10:52:10 by vvalet            #+#    #+#             */
-/*   Updated: 2023/12/11 09:18:18 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/11 10:43:57 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int main(void)
 	std::cout << "a = " << a << ", b = " << b << std::endl;
 	std::cout << "min( a, b ) = " << ::min( a, b ) << std::endl;
 	std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl;
-	
+
 	std::string c = "chaine1";
 	std::string d = "chaine2";
 	::swap(c, d);
