@@ -6,11 +6,12 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 12:22:44 by vvalet            #+#    #+#             */
-/*   Updated: 2023/12/11 09:44:13 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/11 09:46:22 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <cstdlib>
 #include "Array.hpp"
 
 #define MAX_VAL 750
