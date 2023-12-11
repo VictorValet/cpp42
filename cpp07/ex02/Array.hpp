@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 12:02:43 by vvalet            #+#    #+#             */
-/*   Updated: 2023/12/05 14:57:28 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/11 09:42:16 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ class Array
 		~Array(void);
 		unsigned int	size(void) const;
 		T				&operator[](unsigned int n) const;
+		T				*_array;//move to private!!!
 
 	private:
-		T				*_array;
 		unsigned int	_size;
 };
 

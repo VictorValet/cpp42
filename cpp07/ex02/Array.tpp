@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 12:03:05 by vvalet            #+#    #+#             */
-/*   Updated: 2023/12/05 14:59:32 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/11 09:44:32 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ unsigned int	Array<T>::size(void) const
 template<typename T>
 T	&Array<T>::operator[](unsigned int n) const
 {
-	if (n < 0 || n >= this->_size)
+	if (n >= this->_size)
 	{
 		throw (std::exception());
 	}	
