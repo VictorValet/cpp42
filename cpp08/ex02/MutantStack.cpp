@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   easyfind.hpp                                       :+:      :+:    :+:   */
+/*   MutantStack.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/05 15:42:57 by vvalet            #+#    #+#             */
-/*   Updated: 2023/12/12 13:11:43 by vvalet           ###   ########.fr       */
+/*   Created: 2023/12/12 12:25:01 by vvalet            #+#    #+#             */
+/*   Updated: 2023/12/12 12:25:02 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EASYFIND_HPP
-# define EASYFIND_HPP
+#include "MutantStack.hpp"
 
-#include <iterator>
-
-template<typename T>
-int	&easyfind(T cont, int i)
+MutantStack::MutantStack(void)
 {
-	typename std::T::iterator it;
-	typename std::T::iterator ite = cont.end();
-	for (it = cont.begin(); it != ite; ++it)
-	{
-		if (*it == i)
-			return (*it);
-	}
-	throw (std::exception());
+	return ;
 }
 
-#endif
+MutantStack::MutantStack(const MutantStack &original)
+{
+	*this = original;
+	return ;
+}
+
+MutantStack	&MutantStack::operator=(const MutantStack &original)
+{
+	return (*this);
+}
+
+MutantStack::~MutantStack(void)
+{
+	return ;
+}
