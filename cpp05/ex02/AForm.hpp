@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 16:37:40 by vvalet            #+#    #+#             */
-/*   Updated: 2023/11/27 12:13:36 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/12 11:30:55 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ class AForm
 				const char	*what() const throw();
 		};
 		
-	
 	private:
 		AForm	&operator=(const AForm &original);
 		const std::string	_name;
