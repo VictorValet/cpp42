@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 10:45:32 by vvalet            #+#    #+#             */
-/*   Updated: 2023/12/13 16:01:27 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/14 10:14:51 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int main(int argc, char **argv)
 		std::cout << "Wrong database extension!\n";
 		return (1);
 	}
-	BitcoinExchange change;
+	BitcoinExchange	change;
 	try
 	{
 		change.loadDB(db);
@@ -37,8 +37,8 @@ int main(int argc, char **argv)
 	{
 		std::cerr << e.what() << '\n';
 	}
-	std::map<std::string, double>::iterator it;
-	std::map<std::string, double>::iterator ite = change.end();
-	for (it = change.begin(); it != ite; it++)
-		std::cout << it->first << " : " << it->second << std::endl;
+	// std::map<std::string, double>::iterator it;
+	// std::map<std::string, double>::iterator ite = change.end();
+	// for (it = change.begin(); it != ite; it++)
+	// 	std::cout << it->first << " : " << it->second << std::endl;
 }
