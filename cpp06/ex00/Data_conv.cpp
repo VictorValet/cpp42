@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 09:59:26 by vvalet            #+#    #+#             */
-/*   Updated: 2023/12/05 10:08:21 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/14 11:23:01 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,9 @@ static void	convert_int(std::string str, Data &d)
 	int			v;
 	long long	l;
 
-	l = strtod(str.c_str(), NULL);
-	v = strtod(str.c_str(), NULL);
-	if (static_cast<long long>(v) != l)
+	l = static_cast<long long>(strtod(str.c_str(), NULL));
+	v = static_cast<int>(strtod(str.c_str(), NULL));
+	if (v != l)
 		throw (Data::ConversionErrorException("Int conversion overflow"));
 	d.setInt(static_cast<int>(v));
 	d.setChar(static_cast<char>(v));

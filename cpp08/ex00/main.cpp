@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 10:45:32 by vvalet            #+#    #+#             */
-/*   Updated: 2023/12/13 12:32:16 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/15 11:22:07 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 int main(void)
 {
-	int					searched = 6;
-	int					size = 10;
+	int					searched = 12;
+	int					size = 20;
 	std::list<int>		l;
 	std::deque<int>		d;
 	std::vector<int>	v(size);
