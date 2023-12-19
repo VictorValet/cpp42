@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 11:17:03 by vvalet            #+#    #+#             */
-/*   Updated: 2023/12/18 15:10:08 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/19 11:01:21 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	BitcoinExchange::isunique(std::string line) const
 	std::map<std::string, float>::iterator	ite = const_cast<BitcoinExchange *>(this)->end();
 	for (it = const_cast<BitcoinExchange *>(this)->begin(); it != ite; it++)
 	{
-		if (it->first.compare(line.substr(0, 10)) == 0)
+		if (it->first == line.substr(0, 10))
 			throw (LineException("date already exists (line: " + line + ")"));
 	}
 }
@@ -147,7 +147,7 @@ std::map<std::string, float>::iterator	BitcoinExchange::previous_date(std::strin
 	std::map<std::string, float>::iterator	ite = const_cast<BitcoinExchange *>(this)->begin()--;
 	for (it = const_cast<BitcoinExchange *>(this)->end()--; it != ite; it--)
 	{
-		if (key.compare(it->first) >= 0)
+		if (key >= it->first)
 			break ;
 	}
 	if (it == ite)

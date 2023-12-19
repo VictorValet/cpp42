@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 14:14:09 by vvalet            #+#    #+#             */
-/*   Updated: 2023/11/16 15:03:56 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/19 10:58:57 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ AMateria*	MateriaSource::createMateria(std::string const &type)
 	i = 0;
 	while (i < 4)
 	{
-		if (this->known[i] != NULL && this->known[i]->getType().compare(type) == 0)
+		if (this->known[i] != NULL && this->known[i]->getType() == type)
 			return (this->known[i]->clone());
 		i++;
 	}

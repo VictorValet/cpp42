@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 11:54:27 by vvalet            #+#    #+#             */
-/*   Updated: 2023/11/21 16:21:32 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/19 10:56:23 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	PhoneBook::_display_contact(void) const
 	
 	std::cout << "Index: ";
 	getline(std::cin, str);
-	if (all_of(str.begin(), str.end(), isdigit) != 1 || str.compare("\0") == 0)
+	if (all_of(str.begin(), str.end(), isdigit) != 1 || str == "\0")
 	{
 		std::cout << "Wrong input" << std::endl;
 		return ;

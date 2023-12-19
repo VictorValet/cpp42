@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 14:59:42 by vvalet            #+#    #+#             */
-/*   Updated: 2023/12/04 12:52:38 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/19 10:59:29 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static std::string	prompt_name(std::string prompt)
 			std::cout << std::endl;
 			exit(0);
 		}
-		if (str.compare("\0") != 0)
+		if (str != "\0")
 			break ;
 	}
 	return(str);
@@ -56,7 +56,7 @@ static int	prompt_grade(std::string prompt)
 			std::cout << std::endl;
 			exit(0);
 		}
-		if (str.compare("\0") != 0 && is_int(str) == true)
+		if (str != "\0" && is_int(str) == true)
 			break ;
 	}
 	return(atoi(str.c_str()));

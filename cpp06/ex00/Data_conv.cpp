@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 09:59:26 by vvalet            #+#    #+#             */
-/*   Updated: 2023/12/14 11:23:01 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/19 11:00:43 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,7 @@ static bool	is_double(std::string str)
 	bool	dot;
 
 	dot = false;
-	if (str.compare("nan") == 0 || str.compare("inf") == 0 
-		|| str.compare("-inf") == 0 || str.compare("+inf") == 0)
+	if (str == "nan" || str == "inf" || str == "-inf" || str == "+inf")
 		return (true);
 	if (str[0] != '-' && str[0] != '+' && isdigit(str[0]) == false)
 		return (false);

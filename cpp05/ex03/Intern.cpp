@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 16:48:39 by vvalet            #+#    #+#             */
-/*   Updated: 2023/12/04 12:33:52 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/19 11:00:03 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ AForm	*Intern::makeForm(std::string name, std::string new_target)
 	form = NULL;
 	for (int i = 0; i < 3; i++)
 	{
-		if (names[i].compare(name) == 0)
+		if (names[i] == name)
 		{
 			std::cout << "Intern creates " << name << std::endl;
 			form = fct[i](new_target);

@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 17:52:15 by vvalet            #+#    #+#             */
-/*   Updated: 2023/11/21 16:21:40 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/19 10:57:43 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ std::string	prompt_info(std::string prompt)
 	{
 		std::cout << prompt;
 		getline(std::cin, str);
-		if (str.compare("\0") != 0)
+		if (str != "\0")
 			break ;
 	}
 	return(str);
@@ -35,7 +35,7 @@ std::string	prompt_numbers(std::string prompt)
 	{
 		std::cout << prompt;
 		getline(std::cin, str);
-		if (str.compare("\0") != 0
+		if (str != "\0"
 			&& all_of(str.begin(), str.end(), isdigit) == 1)
 			break ;
 	}
@@ -50,11 +50,11 @@ int	main(void)
 	while (1)
 	{
 		command = prompt_info("Please type ADD, SEARCH or EXIT: ");
-		if (command.compare("EXIT") == 0)
+		if (command == "EXIT")
 			break ;
-		else if (command.compare("ADD") == 0)
+		else if (command == "ADD")
 			phonebook.add();
-		else if (command.compare("SEARCH") == 0)
+		else if (command == "SEARCH")
 			phonebook.search();
 	}
 	return (0);	

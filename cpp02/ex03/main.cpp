@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/27 15:02:39 by vvalet            #+#    #+#             */
-/*   Updated: 2023/11/09 12:04:48 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/19 10:59:20 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	prompt_float(std::string prompt, float *value)
 	{
 		std::cout << prompt;
 		getline(std::cin, str);
-		if (str.compare("exit") == 0)
+		if (str == "exit")
 			return (1);
 		try
 		{

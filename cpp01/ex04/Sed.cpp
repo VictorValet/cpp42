@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 18:00:29 by vvalet            #+#    #+#             */
-/*   Updated: 2023/10/31 14:52:19 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/19 10:58:42 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ bool	Sed::replace(void)
 		this->buffer.push_back(c);
 	pos = 0;
 	while (pos + this->searched.length() <= this->buffer.length()
-		&& this->searched.compare(this->replacer) != 0
+		&& this->searched != this->replacer
 		&& this->buffer.find(this->searched, pos) != std::string::npos)
 	{
 		pos = this->buffer.find(this->searched, pos);
