@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 11:17:03 by vvalet            #+#    #+#             */
-/*   Updated: 2023/12/15 11:15:33 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/18 15:10:08 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	BitcoinExchange::isvalidMult(std::string subline) const
 	if (static_cast<long long>(strtod(subline.c_str(), NULL)) 
 		!= static_cast<int>(strtod(subline.c_str(), NULL)))
 		throw (LineException("int overflow (multiplier: " + subline + ")"));
-	if (atof(subline.c_str()) > 100)
+	if (atof(subline.c_str()) > 1000)
 		throw (LineException("multiplier too big (multiplier: " + subline + ")"));
 	for (unsigned int i = 0; i < subline.size(); i++)
 	{
