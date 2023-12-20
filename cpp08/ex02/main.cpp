@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 10:45:32 by vvalet            #+#    #+#             */
-/*   Updated: 2023/12/15 11:27:05 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/20 17:24:36 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ int main(void)
 		mstack.push(751);
 		std::cout << "Last inserted number: " << mstack.top() << std::endl;
 		std::cout << "Size: " << mstack.size() << std::endl;
-		MutantStack<int>::const_iterator it = mstack.cbegin();
-		MutantStack<int>::const_iterator ite = mstack.cend();
+		MutantStack<int>::const_iterator it = mstack.begin();
+		MutantStack<int>::const_iterator ite = mstack.end();
 		++it;
 		--it;
 		while (it != ite)
@@ -66,8 +66,8 @@ int main(void)
 		mstack.push_back(751);
 		std::cout << "Last inserted number: " << mstack.back() << std::endl;
 		std::cout << "Size: " << mstack.size() << std::endl;
-		std::list<int>::const_iterator it = mstack.cbegin();
-		std::list<int>::const_iterator ite = mstack.cend();
+		std::list<int>::const_iterator it = mstack.begin();
+		std::list<int>::const_iterator ite = mstack.end();
 		++it;
 		--it;
 		while (it != ite)
