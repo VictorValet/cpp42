@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 10:45:32 by vvalet            #+#    #+#             */
-/*   Updated: 2023/12/19 11:31:26 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/20 15:41:11 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int main(int argc, char **argv)
 {
 	if (argc < 2)
 	{	
-		std::cout << "Wrong number of arguments!\n";
+		std::cout << "Wrong number of arguments\n";
 		return (1);
 	}
 	++argv;
