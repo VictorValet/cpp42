@@ -6,13 +6,14 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 10:49:00 by vvalet            #+#    #+#             */
-/*   Updated: 2023/12/20 15:39:55 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/20 17:47:15 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PMERGEME_HPP
 # define PMERGEME_HPP
 
+# include <cstdlib>
 # include <sys/time.h>
 # include <iostream>
 # include <list>

@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 12:59:30 by vvalet            #+#    #+#             */
-/*   Updated: 2023/12/18 16:38:19 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/20 17:46:29 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define RPN_HPP
 
 # include <algorithm>
+# include <climits>
+# include <cstring>
 # include <iostream>
 # include <stack>
 

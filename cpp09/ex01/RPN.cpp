@@ -6,24 +6,27 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 12:59:28 by vvalet            #+#    #+#             */
-/*   Updated: 2023/12/18 16:41:45 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/20 17:45:56 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 
-RPN::RPN(void)
+RPN::RPN(void):
+std::stack<int>()
 {
 	return ;
 }
 
-RPN::RPN(char *str)
+RPN::RPN(char *str):
+std::stack<int>()
 {
 	process_string(std::string(str));
 	return ;
 }
 
-RPN::RPN(const RPN &original)
+RPN::RPN(const RPN &original):
+std::stack<int>()
 {
 	*this = original;
 	return ;

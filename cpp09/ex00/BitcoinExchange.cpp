@@ -6,18 +6,20 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 11:17:03 by vvalet            #+#    #+#             */
-/*   Updated: 2023/12/19 11:01:21 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/20 17:43:44 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-BitcoinExchange::BitcoinExchange(void)
+BitcoinExchange::BitcoinExchange(void):
+std::map<std::string, float>()
 {
 	return ;
 }
 
-BitcoinExchange::BitcoinExchange(const BitcoinExchange &original)
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &original):
+std::map<std::string, float>()
 {
 	*this = original;
 	return ;
@@ -127,7 +129,7 @@ void	BitcoinExchange::loadDB(const std::string file)
 {
 	std::ifstream	ifs;
 	std::string		buffer;
-	ifs.open(file, std::ios::in);
+	ifs.open(file.c_str(), std::ios::in);
 	if (ifs.fail())
 		throw (OpenFailureException());
 	ifs.ignore(256, '\n');//number??
@@ -176,7 +178,7 @@ void	BitcoinExchange::display(const std::string file)
 {
 	std::ifstream	ifs;
 	std::string		buffer;
-	ifs.open(file, std::ios::in);
+	ifs.open(file.c_str(), std::ios::in);
 	if (ifs.fail())
 		throw (OpenFailureException());
 	ifs.ignore(256, '\n');//number??

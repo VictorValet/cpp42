@@ -6,13 +6,14 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 11:17:05 by vvalet            #+#    #+#             */
-/*   Updated: 2023/12/18 14:49:58 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/20 17:42:30 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BITCOINEXCHANGE_HPP
 # define BITCOINEXCHANGE_HPP
 
+# include <cstdlib>
 # include <iostream>
 # include <fstream>
 # include <map> 
