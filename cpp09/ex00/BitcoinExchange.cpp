@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 11:17:03 by vvalet            #+#    #+#             */
-/*   Updated: 2023/12/20 17:43:44 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/21 09:50:17 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	BitcoinExchange::isvalidLine(std::string line, std::string sep,
 	void (BitcoinExchange::*fun)(std::string line) const) const
 {
 	if (line.size() < 11 + sep.size())
-		throw (LineException("wrong line format (line: " + line + ")"));
+		throw (LineException("line elements missing (line: " + line + ")"));
 	isvalidDate(line, sep);
 	(this->*fun)(line.substr(10 + sep.size()));
 }
@@ -132,7 +132,7 @@ void	BitcoinExchange::loadDB(const std::string file)
 	ifs.open(file.c_str(), std::ios::in);
 	if (ifs.fail())
 		throw (OpenFailureException());
-	ifs.ignore(256, '\n');//number??
+	ifs.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	while (!ifs.eof())
 	{
 		getline(ifs, buffer);
@@ -145,21 +145,20 @@ void	BitcoinExchange::loadDB(const std::string file)
 
 std::map<std::string, float>::iterator	BitcoinExchange::previous_date(std::string key) const
 {
-	std::map<std::string, float>::iterator	it;
-	std::map<std::string, float>::iterator	ite = const_cast<BitcoinExchange *>(this)->begin()--;
-	for (it = const_cast<BitcoinExchange *>(this)->end()--; it != ite; it--)
+	std::map<std::string, float>::iterator			it;
+	std::map<std::string, float>::const_iterator	ite = this->end();
+	for (it = const_cast<BitcoinExchange *>(this)->begin(); it != ite; it++)
 	{
-		if (key >= it->first)
+		if (key < it->first)
 			break ;
 	}
-	if (it == ite)
+	if (it == this->begin())
 		throw (LineException("no previous date to compare with (date: " + key + ")"));
-	return (it);
+	return (--it);
 }
 
 void	BitcoinExchange::display_line(std::string line)
 {
-	
 	try
 	{
 		isvalidLine(line, " | ", &BitcoinExchange::isvalidMult);
@@ -181,7 +180,7 @@ void	BitcoinExchange::display(const std::string file)
 	ifs.open(file.c_str(), std::ios::in);
 	if (ifs.fail())
 		throw (OpenFailureException());
-	ifs.ignore(256, '\n');//number??
+	ifs.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	while (!ifs.eof())
 	{
 		getline(ifs, buffer);
@@ -198,7 +197,7 @@ const char	*BitcoinExchange::OpenFailureException::what(void) const throw()
 }
 
 BitcoinExchange::LineException::LineException(const std::string str):
-_str("Line error: " + str)
+_str(str)
 {
 	return ;
 }

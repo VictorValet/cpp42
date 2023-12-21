@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 10:49:02 by vvalet            #+#    #+#             */
-/*   Updated: 2023/12/20 15:49:17 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/21 09:02:02 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,7 @@ PmergeMe::PmergeMe(void)
 
 PmergeMe::PmergeMe(char **argv)
 {
-	timeval		vector_beginning;
-	timeval		vector_end;
 	long long	vector_chrono;
-	timeval		list_beginning;
-	timeval		list_end;
 	long long	list_chrono;
 
 	this->verify_arguments(argv);
@@ -36,17 +32,8 @@ PmergeMe::PmergeMe(char **argv)
 	}
 	std::cout << '\n';
 
-	gettimeofday(&vector_beginning, NULL);
-	this->fill_container(argv, this->_vector);
-	this->recursive_sort(1, this->_vector);
-	gettimeofday(&vector_end, NULL);
-	vector_chrono = (vector_end.tv_sec - vector_beginning.tv_sec) * 1000000 + (vector_end.tv_usec - vector_beginning.tv_usec);
-
-	gettimeofday(&list_beginning, NULL);
-	this->fill_container(argv, this->_list);
-	this->recursive_sort(1, this->_list);
-	gettimeofday(&list_end, NULL);
-	list_chrono = (list_end.tv_sec - list_beginning.tv_sec) * 1000000 + (list_end.tv_usec - list_beginning.tv_usec);
+	vector_chrono = this->chrono_sort(argv, this->_vector);
+	list_chrono = this->chrono_sort(argv, this->_list);
 
 	for (unsigned int i = 0; i < this->_vector.size(); i++)
 	{
@@ -57,9 +44,9 @@ PmergeMe::PmergeMe(char **argv)
 	std::cout << '\n';
 
 	std::cout << "Time to process a range of " <<  this->_vector.size() << " elements with std::vector : " 
-		<< vector_chrono << '\n';//attention aux changements de seconde
+		<< vector_chrono / 1000000 << " sec, " << vector_chrono % 1000000 << " microsec\n";
 	std::cout << "Time to process a range of " <<  this->_vector.size() << " elements with std::list : " 
-		<< list_chrono << '\n';//attention aux changements de seconde
+		<< list_chrono / 1000000 << " sec, " << list_chrono % 1000000 << " microsec\n";
 	return ;
 }
 
@@ -96,6 +83,21 @@ void	PmergeMe::verify_arguments(char **argv)
 			throw (ArgumentsException());
 		argv++;
 	}
+}
+
+template<typename T>
+long long	PmergeMe::chrono_sort(char **argv, T &cont)
+{
+	timeval		beginning;
+	timeval		end;
+	long long	chrono;
+	
+	gettimeofday(&beginning, NULL);
+	this->fill_container(argv, cont);
+	this->recursive_sort(1, cont);
+	gettimeofday(&end, NULL);
+	chrono = (end.tv_sec - beginning.tv_sec) * 1000000 + (end.tv_usec - beginning.tv_usec);
+	return (chrono);
 }
 
 template<typename T>

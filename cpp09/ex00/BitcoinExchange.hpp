@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 11:17:05 by vvalet            #+#    #+#             */
-/*   Updated: 2023/12/20 17:42:30 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/12/21 09:32:13 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 # define BITCOINEXCHANGE_HPP
 
 # include <cstdlib>
-# include <iostream>
 # include <fstream>
+# include <limits>
+# include <iostream>
 # include <map> 
 
 class BitcoinExchange : public std::map<std::string, float>
