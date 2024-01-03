@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 10:49:02 by vvalet            #+#    #+#             */
-/*   Updated: 2023/12/21 09:02:02 by vvalet           ###   ########.fr       */
+/*   Updated: 2024/01/03 16:47:07 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,9 @@ PmergeMe::PmergeMe(void)
 	return ;
 }
 
-PmergeMe::PmergeMe(char **argv)
+PmergeMe::PmergeMe(char **argv):
+vector_comp(0)/* , list_comp(0) */ 
 {
-	long long	vector_chrono;
-	long long	list_chrono;
-
 	this->verify_arguments(argv);
 	
 	for (unsigned int i = 0; argv[i]; i++)
@@ -32,8 +30,8 @@ PmergeMe::PmergeMe(char **argv)
 	}
 	std::cout << '\n';
 
-	vector_chrono = this->chrono_sort(argv, this->_vector);
-	list_chrono = this->chrono_sort(argv, this->_list);
+	this->vector_chrono = this->chrono_sort(argv, this->_vector);
+	this->list_chrono = this->chrono_sort(argv, this->_list);
 
 	for (unsigned int i = 0; i < this->_vector.size(); i++)
 	{
@@ -44,9 +42,10 @@ PmergeMe::PmergeMe(char **argv)
 	std::cout << '\n';
 
 	std::cout << "Time to process a range of " <<  this->_vector.size() << " elements with std::vector : " 
-		<< vector_chrono / 1000000 << " sec, " << vector_chrono % 1000000 << " microsec\n";
+		<< this->vector_chrono / 1000000 << " sec, " << vector_chrono % 1000000 << " microsec\n";
 	std::cout << "Time to process a range of " <<  this->_vector.size() << " elements with std::list : " 
-		<< list_chrono / 1000000 << " sec, " << list_chrono % 1000000 << " microsec\n";
+		<< this->list_chrono / 1000000 << " sec, " << list_chrono % 1000000 << " microsec\n";
+	std::cout << "comparisons: " << this->vector_comp / 2 << '\n';
 	return ;
 }
 
@@ -65,6 +64,16 @@ PmergeMe	&PmergeMe::operator=(const PmergeMe &original)
 PmergeMe::~PmergeMe(void)
 {
 	return ;
+}
+
+//Returns nth jacobsthal number
+unsigned int	PmergeMe::Jacobsthal(unsigned int n)
+{
+	if (n == 0)
+		return (0);
+	if (n == 1)
+		return (1);
+	return (Jacobsthal(n - 1) + 2 * Jacobsthal(n - 2)); 
 }
 
 void	PmergeMe::verify_arguments(char **argv)
@@ -135,6 +144,7 @@ void	PmergeMe::sort_range(unsigned int range, T &cont)
 	typename T::iterator	right = this->move(left, range);
 	for (int i = 0; i < limit; i++)
 	{
+		this->vector_comp++;//
 		if (*left > *right)
 		{
 			std::swap_ranges(this->move(right, 1 - static_cast<long long>(range)),
@@ -147,25 +157,67 @@ void	PmergeMe::sort_range(unsigned int range, T &cont)
 }
 
 template<typename T>
+T	PmergeMe::next_element(T left, unsigned int i, unsigned int range, unsigned int size)
+{
+	long long int	nth_jacobsthal;
+	long long int	index_jacobsthal;
+	long long int	jacobsthal;
+	long long int	prev_jacobsthal;
+	long long int	moves;
+
+	nth_jacobsthal = 1;
+	while (this->Jacobsthal(nth_jacobsthal) < i)//va prendre des plombes????
+		nth_jacobsthal++;
+	jacobsthal = Jacobsthal(nth_jacobsthal);
+	prev_jacobsthal = Jacobsthal(nth_jacobsthal - 1);
+	index_jacobsthal = i - (jacobsthal - prev_jacobsthal);
+	moves = (2 * jacobsthal - index_jacobsthal + 1) * range - 1;//a verifier
+	if (jacobsthal * (2 * range) + 1 > size)//a verifier
+	{
+		moves -= (jacobsthal * (2 * range) + 1) + ((size / (range * 2)) - range * 2);//WRONG!!!!!!!!!!!
+		std::cout << "Bigger jacobsthal on range: " << range << " | moves: " << moves << '\n';
+		std::cout << "First part: " << (((2 * jacobsthal - index_jacobsthal + 1) * range) - 1) << '\n';
+		std::cout << "Second part: " << (jacobsthal * (2 * range) + 1) + ((size / (range * 2)) - range * 2) << '\n';
+	}
+	return (this->move(left, moves));
+}
+
+template<typename T>
 void	PmergeMe::insert_range(unsigned int range, T &cont)
 {
-	long long				limit = cont.size() - range;
 	typename T::iterator	left;
 	typename T::iterator	right;
-	for (int i = 0; i <= limit; i += (2 * range))
+	// for (typename T::iterator x = cont.begin(); x != cont.end(); x++)
+	// 	std::cout << *x << ' ';
+	// std::cout << '\n';
+	for (unsigned int i = 1; i * 2 * range <= cont.size() - range; i++)//virer la fct size plus haut
 	{
+		// std::cout << "range: " << range << " | iteration: " << i << '\n';
+		
 		left = this->move(cont.begin(), range - 1);
-		right = this->move(left, i);
-		while (left != right)
+		
+		//find element to insert (the right iterator)
+		// right = this->move(left, i * (2 * range));
+		right = next_element(cont.begin(), i, range, cont.size());
+
+		std::cout << "Right: " << *right << " | left: " << *left << '\n';	
+
+		//find place where insert (the left iterator)
+		for (unsigned int j = 0; j < i * 2; j++) 
 		{
+			this->vector_comp++;//
 			if (*left > *right)
-			{
-				T copy(this->move(right, 1 - static_cast<long long>(range)), this->move(right, 1));
-				cont.erase(this->move(right, 1 - static_cast<long long>(range)), this->move(right, 1));
-				cont.insert(this->move(left, 1 - static_cast<long long>(range)), copy.begin(), copy.end());
 				break ;
-			}
 			left = this->move(left, range);
+		}
+
+		// std::cout << "Right: " << *right << " | left: " << *left << '\n';	
+
+		if (left != right) //insert if needed (a simplifier???)
+		{
+			T copy(this->move(right, 1 - static_cast<long long>(range)), this->move(right, 1));
+			cont.erase(this->move(right, 1 - static_cast<long long>(range)), this->move(right, 1));
+			cont.insert(this->move(left, 1 - static_cast<long long>(range)), copy.begin(), copy.end());
 		}
 	}
 }
