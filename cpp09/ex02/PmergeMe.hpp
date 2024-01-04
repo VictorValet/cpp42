@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 10:49:00 by vvalet            #+#    #+#             */
-/*   Updated: 2024/01/04 16:12:44 by vvalet           ###   ########.fr       */
+/*   Updated: 2024/01/04 18:51:58 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <iostream>
 # include <list>
 # include <vector>
+# include <algorithm>
 
 class PmergeMe
 {
@@ -30,8 +31,6 @@ class PmergeMe
 		void			verify_arguments(char **argv);
 		template <typename T>
 		void			fill_container(char **argv, T &cont);
-		template <typename T>
-		T				move(T it, long long int n);
 		template <typename T>
 		void			sort_range(unsigned int range, T &cont);
 		template<typename T>
@@ -47,7 +46,7 @@ class PmergeMe
 		std::vector<int>	_vector;
 		std::list<int>		_list;
 		long long			vector_chrono;
-		// long long			list_chrono;
+		long long			list_chrono;
 		unsigned long long	vector_comp;
 		// unsigned long long	list_comp;
 		PmergeMe(void);
