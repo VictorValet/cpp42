@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 10:49:00 by vvalet            #+#    #+#             */
-/*   Updated: 2024/01/04 15:59:32 by vvalet           ###   ########.fr       */
+/*   Updated: 2024/01/04 16:12:44 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ class PmergeMe
 		std::vector<int>	_vector;
 		std::list<int>		_list;
 		long long			vector_chrono;
-		long long			list_chrono;
+		// long long			list_chrono;
 		unsigned long long	vector_comp;
 		// unsigned long long	list_comp;
 		PmergeMe(void);
