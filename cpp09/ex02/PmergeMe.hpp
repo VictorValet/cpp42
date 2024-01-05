@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 10:49:00 by vvalet            #+#    #+#             */
-/*   Updated: 2024/01/04 18:51:58 by vvalet           ###   ########.fr       */
+/*   Updated: 2024/01/05 11:54:12 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,26 +27,25 @@ class PmergeMe
 		~PmergeMe(void);
 
 	private:
-		unsigned int	Jacobsthal(unsigned int n);
-		void			verify_arguments(char **argv);
+		void					verify_arguments(char **argv);
 		template <typename T>
-		void			fill_container(char **argv, T &cont);
+		void					fill_container(char **argv, T &cont);
 		template <typename T>
-		void			sort_range(unsigned int range, T &cont);
+		void					sort_pairs_range(unsigned int range, T &cont);
 		template<typename T>
-		T				next_element_range(T left, unsigned int i, unsigned int range, unsigned int size);
-		template <typename T>
-		void			insert_range(unsigned int range, T &cont);
-		template <typename T>
-		void			recursive_sort(unsigned int range, T &cont);
-		template <typename T>
-		void			insert(unsigned int range, T &cont);
+		typename T::iterator	binary_search(T &cont, int n, unsigned int range, unsigned int i);
 		template<typename T>
-		long long		chrono_sort(char **argv, T &cont);
+		void					insert_low_chain(T &cont, T &copy, unsigned int range);
+		template <typename T>
+		void					insert_range(unsigned int range, T &cont);
+		template <typename T>
+		void					recursive_sort(unsigned int range, T &cont);
+		template<typename T>
+		long long				chrono_sort(char **argv, T &cont);
 		std::vector<int>	_vector;
 		std::list<int>		_list;
 		long long			vector_chrono;
-		long long			list_chrono;
+		// long long			list_chrono;
 		unsigned long long	vector_comp;
 		// unsigned long long	list_comp;
 		PmergeMe(void);
