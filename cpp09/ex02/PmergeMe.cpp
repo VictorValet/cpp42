@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 10:49:02 by vvalet            #+#    #+#             */
-/*   Updated: 2024/01/05 16:12:19 by vvalet           ###   ########.fr       */
+/*   Updated: 2024/01/05 18:03:40 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,16 @@ T	move(T it, long long n)
 }
 
 template<typename T>
+unsigned int	distance_calc(T left, T right)
+{
+	unsigned int	distance = 0;
+
+	while (move(left, distance) != right)
+		distance++;
+	return (distance);
+}
+
+template<typename T>
 void	PmergeMe::sort_pairs_range(unsigned int range, T &cont)
 {
 	long long				limit = cont.size() / (range * 2);
@@ -214,27 +224,33 @@ typename T::iterator	PmergeMe::binary_search(T &cont, int n, unsigned int range,
 	// typename T::iterator	right = move(left, (distance + 1) * range);
 	
 	typename T::iterator	right = cont.end();
-	unsigned int			distance = cont.size() / range;
-	std::cout << "Number: " << n << " | Iteration: " << i << " | Elmts to compare: " << distance << " | Range: " << range << '\n';		
-	std::cout << "Left: " << *(left) << " | Right: " << *right << '\n';
+	unsigned int			distance = cont.size() + 1 - range;
+	std::cout << "Number: " << n << " | Iteration: " << i << " | Distance to compare: " << distance << " | Range: " << range << '\n';		
+	std::cout << "Left: " << *left << '\n';
 	std::cout << "copy: ";
 	for (typename T::iterator it = cont.begin(); it != cont.end(); it++)
 	{
 		std::cout << *it << " ";
 	}
 	std::cout << '\n';
+	
 	//marche pour une range de 1 mais pas plus (la condition pose probleme notamment)
-    while (left != right) {
-        // gérer std::distance differemment!!!
-        typename T::iterator mid = left + (std::distance(left, right) / 2);
+    while ((range == 1 && left != right) || (range != 1 && distance > range))
+	{
+        // typename T::iterator mid = left + (std::distance(left, right) / 2);
+        // typename T::iterator mid = left + (distance(left, right) / 2);
+        typename T::iterator mid = left + range * (distance / (2 * range));//verifier que les deux font la même chose sur 1
 
-        if (*mid < n) {
-            left = mid + 1;
-        } else {
+        if (*mid < n) 
+            left = mid + range;
+		else 
             right = mid;
-        }
+		distance = distance_calc(left, right);
     }
-	left = move(left, - static_cast<long long>(range));
+	if (range != 1 && distance == range)
+		;
+	else
+		left = move(left, - static_cast<long long>(range));
 	std::cout << "Left: " << *left << " | distance from 0: " << std::distance(cont.begin(), left) << '\n';
 
 	// version 2
