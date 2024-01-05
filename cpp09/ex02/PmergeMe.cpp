@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 10:49:02 by vvalet            #+#    #+#             */
-/*   Updated: 2024/01/04 22:56:54 by vvalet           ###   ########.fr       */
+/*   Updated: 2024/01/05 07:10:26 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,12 +180,15 @@ T	PmergeMe::next_element_range(T begin, unsigned int i, unsigned int range, unsi
 		<< index_jacobsthal << " | Moves: " << moves << '\n';
 	if ((size - range) / (range * 2) < jacobsthal)//si on déborde du cont en cherchant le prochain element a trier
 	{
-		if (range > 1)
-			moves -= range * (jacobsthal - (size - range) / (range * 4));//STILL WROOOOONG!
+		// if (range > 1)
+		// 	moves -= range * (jacobsthal - (size - range) / (range * 4));//STILL WROOOOONG!
+		// else
+		// 	moves -= 2;
+		if ((size - (size % range)) % (2 * range) == range)
+			moves -= (((3 * range)) + ((jacobsthal - 1) * 2 * range)) - (size - (size % range));
 		else
-			moves -= 2;
+			moves -= (((3 * range)) + ((jacobsthal - 1) * 2 * range)) - ((size - (size % range)) - range);
 	}
-	
 	
 	std::cout << "Range: " << range << " | Iteration: " << i << " | Jacobsthal: " << jacobsthal << " | Index jacobsthal: " 
 		<< index_jacobsthal << " | Moves: " << moves << '\n';
@@ -211,7 +214,7 @@ void	copy_high_chain(T &cont, T &copy, unsigned int range)
 template <typename T>
 void	PmergeMe::insert(unsigned int range, T &cont)
 {
-	if (cont.size() < 3 * range)//3 (insérer le 3e groupe s'il existe)
+	if (cont.size() < 3 * range)//3 (insérer le dernier groupe s'il est seul mais entier)
 		return ;
 	T copy;
 
@@ -223,11 +226,10 @@ void	PmergeMe::insert(unsigned int range, T &cont)
 	//insert elements of low chain
 	typename T::iterator	left;
 	typename T::iterator	right;
-	for (unsigned int i = 1; copy.size() / range < cont.size() / range; i++)//virer la fct size plus haut //une fois de trop?
+	for (unsigned int i = 1; copy.size() < cont.size() - (cont.size() % range); i++)//virer la fct size plus haut //une fois de trop?
 	{	
 		left = move(copy.begin(), range - 1);
 		right = next_element_range(cont.begin(), i, range, cont.size());
-		
 
 		//find place where insert (the left iterator)
 		for (unsigned int j = range; j < copy.size(); j += range) //a optimiser
