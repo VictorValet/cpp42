@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 10:49:02 by vvalet            #+#    #+#             */
-/*   Updated: 2024/01/08 10:47:00 by vvalet           ###   ########.fr       */
+/*   Updated: 2024/01/08 11:44:21 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ _comp(0), _vector_comp(0), _list_comp(0)
 {
 	this->verify_arguments(argv);
 	
+	std::cout << "Before: ";
 	for (unsigned int i = 0; argv[i]; i++)
 	{
 		std::cout << argv[i];
@@ -35,6 +36,7 @@ _comp(0), _vector_comp(0), _list_comp(0)
 	this->_list_chrono = this->chrono_sort(argv, this->_list);
 	this->_list_comp = this->_comp;
 
+	std::cout << "After:  ";
 	for (unsigned int i = 0; i < this->_vector.size(); i++)
 	{
 		std::cout << this->_vector[i];
@@ -43,13 +45,10 @@ _comp(0), _vector_comp(0), _list_comp(0)
 	}
 	std::cout << '\n';
 
-	std::cout << "Vector is sorted: " << is_sorted(_vector.begin(), _vector.end()) << '\n';
-	std::cout << "List is sorted: " << is_sorted(_list.begin(), _list.end()) << '\n';
-
 	std::cout << "Time to process a range of " <<  this->_vector.size() << " elements with std::vector : " 
 		<< this->_vector_chrono / 1000000 << " sec, " << this->_vector_chrono % 1000000 << " microsec, with a total of "
 		<<  this->_vector_comp << " comparisons\n";
-	std::cout << "Time to process a range of " <<  this->_vector.size() << " elements with std::list : " 
+	std::cout << "Time to process a range of " <<  this->_list.size() << " elements with std::list   : " 
 		<< this->_list_chrono / 1000000 << " sec, " << this->_list_chrono % 1000000 << " microsec, with a total of "
 		<<  this->_list_comp << " comparisons\n";
 	return ;
@@ -161,7 +160,11 @@ void	copy_high_chain(T &cont, T &copy, unsigned int range)
 	copy.insert(copy.begin(), cont.begin(), move(cont.begin(), range));	
 }
 
-//explication des formules!
+/* Returns the next element to insert after begin, based on the number of 
+iterations, the range, the size of the container and the jacobsthal numbers.
+If size is lesser than the number of moves the function finds, it means that
+the calculated index of the next number to insert is bigger than the size of
+the container and therefore that we must go backwards to find the right index. */
 template<typename T>
 T	next_element_range(T begin, unsigned int i, unsigned int range, unsigned int size)
 {
@@ -178,7 +181,7 @@ T	next_element_range(T begin, unsigned int i, unsigned int range, unsigned int s
 	prev_jacobsthal = Jacobsthal(nth_jacobsthal - 1);
 	index_jacobsthal = i - prev_jacobsthal;
 	moves = ((3 * range) - 1) + ((jacobsthal - index_jacobsthal) * 2 * range);
-	if ((size - range) / (range * 2) < jacobsthal)//si on déborde du cont en cherchant le prochain element a trier
+	if ((size - range) / (range * 2) < jacobsthal)
 	{
 		if ((size - (size % range)) % (2 * range) == range)
 			moves -= (((3 * range)) + ((jacobsthal - 1) * 2 * range)) - (size - (size % range));
@@ -188,6 +191,10 @@ T	next_element_range(T begin, unsigned int i, unsigned int range, unsigned int s
 	return (move(begin, moves));
 }
 
+/* Returns left, the position in the sorted container cont where *left is
+inferior to n and (left + range) is superior to n. If n is smaller than any
+element of cont, returns cont.begin() - 1. If n is bigger than any element of
+cont, returns last element of cont. */
 template<typename T>
 typename T::iterator	PmergeMe::binary_search(T &cont, int n, unsigned int range)
 {
@@ -195,14 +202,6 @@ typename T::iterator	PmergeMe::binary_search(T &cont, int n, unsigned int range)
 	typename T::iterator	right = cont.end();
 	typename T::iterator	last = --right;
 	unsigned int			distance = std::distance(left, right);
-
-	// std::cout << "Number: " << n << " | Iteration: " << i << " | Distance to compare: " << distance << " | Range: " << range << '\n';		
-	// std::cout << "copy: ";
-	// for (typename T::iterator it = cont.begin(); it != cont.end(); it++)
-	// {
-	// 	std::cout << *it << " ";
-	// }
-	// std::cout << '\n';
 
     while ((range == 1 && left != right) || distance > 1)
 	{
@@ -217,8 +216,6 @@ typename T::iterator	PmergeMe::binary_search(T &cont, int n, unsigned int range)
     }
 	if (left != last || n < *left)
 		left = move(left, - static_cast<long long>(range));
-	// std::cout << "Left: " << *left << " | distance from 0: " << std::distance(cont.begin(), left) << " | Right: " << *right << " | distance from 0: " << std::distance(cont.begin(), right) << '\n' << '\n';
-
 	return (left);
 }
 
@@ -234,7 +231,7 @@ void	PmergeMe::insert_low_chain(T &cont, T &copy, unsigned int range)
 	{
 		right = next_element_range(cont_begin, i, range, cont_size);
 		left = this->binary_search(copy, *right, range);
-		copy.insert(move(left, 1), move(right, 1 - static_cast<long long>(range)), move(right, 1));//faire en sorte qu'on ait les bons index dans les fonctions du dessus
+		copy.insert(move(left, 1), move(right, 1 - static_cast<long long>(range)), move(right, 1));
 	}
 }
 
