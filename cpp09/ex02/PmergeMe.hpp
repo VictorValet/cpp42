@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 10:49:00 by vvalet            #+#    #+#             */
-/*   Updated: 2024/01/05 11:54:12 by vvalet           ###   ########.fr       */
+/*   Updated: 2024/01/08 10:26:07 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class PmergeMe
 		template <typename T>
 		void					sort_pairs_range(unsigned int range, T &cont);
 		template<typename T>
-		typename T::iterator	binary_search(T &cont, int n, unsigned int range, unsigned int i);
+		typename T::iterator	binary_search(T &cont, int n, unsigned int range);
 		template<typename T>
 		void					insert_low_chain(T &cont, T &copy, unsigned int range);
 		template <typename T>
@@ -44,10 +44,11 @@ class PmergeMe
 		long long				chrono_sort(char **argv, T &cont);
 		std::vector<int>	_vector;
 		std::list<int>		_list;
-		long long			vector_chrono;
-		// long long			list_chrono;
-		unsigned long long	vector_comp;
-		// unsigned long long	list_comp;
+		long long			_vector_chrono;
+		long long			_list_chrono;
+		unsigned long long	_comp;
+		unsigned long long	_vector_comp;
+		unsigned long long	_list_comp;
 		PmergeMe(void);
 		PmergeMe(const PmergeMe &original);
 		PmergeMe	&operator=(const PmergeMe &original);
