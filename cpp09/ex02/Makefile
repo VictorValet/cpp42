@@ -6,7 +6,7 @@
 #    By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/30 16:10:39 by vvalet            #+#    #+#              #
-#    Updated: 2024/01/04 18:38:18 by vvalet           ###   ########.fr        #
+#    Updated: 2024/01/08 11:54:25 by vvalet           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ OBJ_PATH	=	objs/
 
 CC			= 	c++
 
-FLAGS		=	-Wall -Wextra -Werror #-std=c++98
+FLAGS		=	-Wall -Wextra -Werror -std=c++98
 
 #---------------------------------SOURCE FILES---------------------------------
 
