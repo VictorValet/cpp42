@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
+/*   By: vvalet <vvalet@student.s19.be >            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 11:17:03 by vvalet            #+#    #+#             */
-/*   Updated: 2023/12/21 09:50:17 by vvalet           ###   ########.fr       */
+/*   Updated: 2024/01/09 16:05:02 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ void	BitcoinExchange::loadDB(const std::string file)
 	std::string		buffer;
 	ifs.open(file.c_str(), std::ios::in);
 	if (ifs.fail())
-		throw (OpenFailureException());
+		throw (DBFailureException());
 	ifs.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	while (!ifs.eof())
 	{
@@ -179,7 +179,7 @@ void	BitcoinExchange::display(const std::string file)
 	std::string		buffer;
 	ifs.open(file.c_str(), std::ios::in);
 	if (ifs.fail())
-		throw (OpenFailureException());
+		throw (INFailureException());
 	ifs.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	while (!ifs.eof())
 	{
@@ -191,9 +191,14 @@ void	BitcoinExchange::display(const std::string file)
 	ifs.close();
 }
 
-const char	*BitcoinExchange::OpenFailureException::what(void) const throw()
+const char	*BitcoinExchange::DBFailureException::what(void) const throw()
 {
-	return ("Failed to open file");
+	return ("Error: Failed to open database");
+}
+
+const char	*BitcoinExchange::INFailureException::what(void) const throw()
+{
+	return ("Error: Failed to open input file");
 }
 
 BitcoinExchange::LineException::LineException(const std::string str):

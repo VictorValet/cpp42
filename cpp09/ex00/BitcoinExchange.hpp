@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
+/*   By: vvalet <vvalet@student.s19.be >            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 11:17:05 by vvalet            #+#    #+#             */
-/*   Updated: 2023/12/21 09:32:13 by vvalet           ###   ########.fr       */
+/*   Updated: 2024/01/09 16:03:58 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,12 @@ class BitcoinExchange : public std::map<std::string, float>
 		std::map<std::string, float>::iterator	previous_date(std::string key) const;
 		void									add_line(const std::string line);
 		void									display_line(const std::string line);
-		class OpenFailureException : public std::exception
+		class DBFailureException : public std::exception
+		{
+			public:
+				const char* what(void) const throw();
+		};
+		class INFailureException : public std::exception
 		{
 			public:
 				const char* what(void) const throw();
