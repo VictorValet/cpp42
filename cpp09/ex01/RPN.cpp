@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
+/*   By: vvalet <vvalet@student.s19.be >            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 12:59:28 by vvalet            #+#    #+#             */
-/*   Updated: 2024/01/08 11:54:54 by vvalet           ###   ########.fr       */
+/*   Updated: 2024/01/12 11:11:20 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ void	RPN::validate_operation(char op, int const &left_operand, int const &right_
 {
 	if (op == '/' && right_operand == 0)
 		throw (WrongInputException("division by 0"));
-	if ((op == '+' && left_operand > INT_MAX - right_operand)
-		|| (op == '-' && left_operand < INT_MIN + right_operand)
+	if ((op == '+' && left_operand > static_cast<long long int>(INT_MAX) - right_operand)
+		|| (op == '-' && left_operand < static_cast<long long int>(INT_MIN) + right_operand)
 		|| (op == '*' && right_operand > 1 && (left_operand > INT_MAX / right_operand
 			|| left_operand < INT_MIN / right_operand)))
 		throw (WrongInputException("overflow"));
