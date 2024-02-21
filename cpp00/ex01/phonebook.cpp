@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be >            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 17:52:15 by vvalet            #+#    #+#             */
-/*   Updated: 2024/02/05 10:43:21 by vvalet           ###   ########.fr       */
+/*   Updated: 2024/02/21 09:45:37 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,12 @@ std::string	prompt_info(std::string prompt)
 	while (1)
 	{
 		std::cout << prompt;
-		getline(std::cin, str);//fail on ctrl-D
+		getline(std::cin, str);
+		if (std::cin.badbit == true)
+		{
+			std::cout << "\n";
+			exit (0);
+		}
 		if (str != "\0")
 			break ;
 	}
