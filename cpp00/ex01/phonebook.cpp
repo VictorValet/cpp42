@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
+/*   By: vvalet <vvalet@student.s19.be >            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 17:52:15 by vvalet            #+#    #+#             */
-/*   Updated: 2023/12/19 10:57:43 by vvalet           ###   ########.fr       */
+/*   Updated: 2024/02/05 10:43:21 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ std::string	prompt_info(std::string prompt)
 	while (1)
 	{
 		std::cout << prompt;
-		getline(std::cin, str);
+		getline(std::cin, str);//fail on ctrl-D
 		if (str != "\0")
 			break ;
 	}

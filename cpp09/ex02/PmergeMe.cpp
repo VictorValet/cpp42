@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
+/*   By: vvalet <vvalet@student.s19.be >            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 10:49:02 by vvalet            #+#    #+#             */
-/*   Updated: 2024/01/08 11:44:21 by vvalet           ###   ########.fr       */
+/*   Updated: 2024/02/21 09:38:57 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,28 +22,10 @@ _comp(0), _vector_comp(0), _list_comp(0)
 {
 	this->verify_arguments(argv);
 	
-	std::cout << "Before: ";
-	for (unsigned int i = 0; argv[i]; i++)
-	{
-		std::cout << argv[i];
-		if (argv[i] + 1 != 0)
-			std::cout << " ";
-	}
-	std::cout << '\n';
-
 	this->_vector_chrono = this->chrono_sort(argv, this->_vector);
 	this->_vector_comp = this->_comp;
 	this->_list_chrono = this->chrono_sort(argv, this->_list);
 	this->_list_comp = this->_comp;
-
-	std::cout << "After:  ";
-	for (unsigned int i = 0; i < this->_vector.size(); i++)
-	{
-		std::cout << this->_vector[i];
-		if (i < this->_vector.size() - 1)
-			std::cout << " ";
-	}
-	std::cout << '\n';
 
 	std::cout << "Time to process a range of " <<  this->_vector.size() << " elements with std::vector : " 
 		<< this->_vector_chrono / 1000000 << " sec, " << this->_vector_chrono % 1000000 << " microsec, with a total of "
